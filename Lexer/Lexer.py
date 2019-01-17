@@ -2,21 +2,19 @@ import ply.lex as lex
 
 
 class Lexer:
-    tokens = ['Const', 'reserved', 'Num', 'Letter', 'Opening_Bracket', 'Closing_Bracket', 'Semicolon', 'Boolean',
-              'Character', 'Integer', 'char', 'bool', 'int', 'void', 'If', 'Other', 'Till',
-              'ComeBack', 'GiveBack', 'Continue', 'PP', 'MM', 'Opening_Parentheses', 'Static',
+    sTable = []
+
+    tokens = ['Const_KW', 'reserved', 'Num', 'Letter', 'Opening_Bracket', 'Closing_Bracket', 'Semicolon', 'Boolean_KW',
+              'Character_KW', 'Integer_KW', 'char_KW', 'bool_KW', 'int_KW', 'void_KW', 'If_KW', 'Other_KW', 'Till_KW',
+              'ComeBack_KW', 'GiveBack_KW', 'Continue_KW', 'PP', 'MM', 'Opening_Parentheses', 'Static_KW',
               'Closing_Parentheses', 'Opening_Brace', 'Closing_Brace', 'Equal', 'PlusEqual',
-              'MinusEqual', 'TimesEqual', 'DivideEqual', 'Then', 'Else', 'LEqual', 'GEqual',
+              'MinusEqual', 'TimesEqual', 'DivideEqual', 'Then_KW', 'Else_KW', 'LEqual', 'GEqual',
               'EEqual', 'GreaterOP', 'LessOP', 'NonEqualOP', 'Plus', 'Minus', 'Times',
-              'Divide', 'ModeOP', 'QMark', 'True', 'False', 'DoubleAnd', 'DoubleOr',
-              'Tilda', 'And', 'Or']
+              'Divide', 'ModeOP', 'QMark', 'True_KW', 'False_KW', 'DoubleAnd', 'DoubleOr',
+              'Tilda', 'And', 'Or', 'ID', 'Comment']
 
 
     t_ignore = ' \t'
-    t_Const = r'CONST'
-
-    t_Num = r'[0-9]'
-    t_Letter = r'[a-zA-Z]'
     t_Opening_Bracket = r'\['
     t_Closing_Bracket = r']'
     t_Semicolon = r';'
@@ -50,41 +48,53 @@ class Lexer:
     t_Or = r'\|'
 
     reserved = {
-        'Boolean': 't_Boolean',
-        'character': 't_Character',
-        'integer': 't_Integer',
-        'char': 't_char',
-        'bool': 't_bool',
-        'int': 't_int',
-        'void': 't_void',
-        'if': 't_If',
-        'other': 't_Other',
-        'till': 't_Till',
-        'comeback': 't_ComeBack',
-        'giveback': 't_GiveBack',
-        'continue': 't_Continue',
-        'static': 't_Static',
-        'then': 't_Then',
-        'else': 't_Else',
-        'CONST': 't_Const',
-        'true': 't_True',
-        'false': 't_False'
+        'Boolean': 'Boolean_KW',
+        'character': 'Character_KW',
+        'integer': 'Integer_KW',
+        'char': 'char_KW',
+        'bool': 'bool_KW',
+        'int': 'int_KW',
+        'void': 'void_KW',
+        'if': 'If_KW',
+        'other': 'Other_KW',
+        'till': 'Till_KW',
+        'comeback': 'ComeBack_KW',
+        'giveback': 'GiveBack_KW',
+        'continue': 'Continue_KW',
+        'static': 'Static_KW',
+        'then': 'Then_KW',
+        'else': 'Else_KW',
+        'CONST': 'Const_KW',
+        'true': 'True_KW',
+        'false': 'False_KW'
     }
 
-    # def t_reserved(self, t):
-    #     t.type = self.reserved.get(t.value)  # Check for reserved words
-    #     return t
+    def t_Num(self, t):
+        r'\d+'
+        t.value = int(t.value)
+        return t
+
+
+    def t_reserved(self, t):
+        r"""[a-zA-Z_][a-zA-Z0-9_]*"""
+        t.type = self.reserved.get(t.value, 'ID')  # Check for reserved words
+        if t.type == 'ID':
+            if t.value not in self.sTable:
+                self.sTable.append(t.value)
+
+        return t
 
 
     def t_error(self, t):
         print("Invalid character: ", t.value[0])
         t.lexer.skip(1)
 
+    def t_COMMENT(self, t):
+        r'(//.*)|%%%.*[\r\n]*.*%%%'
+        pass
+
 
     def build(self, **kwargs):
-        '''
-        build the lexer
-        '''
         self.lexer = lex.lex(module=self, **kwargs)
 
         return self.lexer
