@@ -11,10 +11,12 @@ class Lexer:
               'MinusEqual', 'TimesEqual', 'DivideEqual', 'Then_KW', 'Else_KW', 'LEqual', 'GEqual',
               'EEqual', 'GreaterOP', 'LessOP', 'NonEqualOP', 'Plus', 'Minus', 'Times',
               'Divide', 'ModeOP', 'QMark', 'True_KW', 'False_KW', 'DoubleAnd', 'DoubleOr',
-              'Tilda', 'And', 'Or', 'Comment']
+              'Tilda', 'And', 'Or', 'Comment', 'Comma', 'Colon']
 
 
     t_ignore = ' \t'
+    t_Colon = '\:'
+    t_Comma = r'\,'
     t_Opening_Bracket = r'\['
     t_Closing_Bracket = r']'
     t_Semicolon = r';'
