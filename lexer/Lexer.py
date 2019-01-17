@@ -11,7 +11,7 @@ class Lexer:
               'MinusEqual', 'TimesEqual', 'DivideEqual', 'Then_KW', 'Else_KW', 'LEqual', 'GEqual',
               'EEqual', 'GreaterOP', 'LessOP', 'NonEqualOP', 'Plus', 'Minus', 'Times',
               'Divide', 'ModeOP', 'QMark', 'True_KW', 'False_KW', 'DoubleAnd', 'DoubleOr',
-              'Tilda', 'And', 'Or', 'ID', 'Comment']
+              'Tilda', 'And', 'Or', 'Comment']
 
 
     t_ignore = ' \t'
@@ -70,20 +70,20 @@ class Lexer:
     }
 
     def t_Num(self, t):
-        r'\d+'
+        r'[0-9]+'
         t.value = int(t.value)
         return t
 
 
     def t_reserved(self, t):
-        r"""[a-zA-Z_][a-zA-Z0-9_]*"""
-        t.type = self.reserved.get(t.value, 'ID')  # Check for reserved words
-        if t.type == 'ID':
+        # r"""[a-zA-Z_][a-zA-Z0-9_]*"""
+        r"""[a-zA-Z]+"""
+        t.type = self.reserved.get(t.value, 'Letter')  # Check for reserved words
+        if t.type == 'Letter':
             if t.value not in self.sTable:
                 self.sTable.append(t.value)
 
         return t
-
 
     def t_error(self, t):
         print("Invalid character: ", t.value[0])

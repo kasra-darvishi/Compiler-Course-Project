@@ -1,7 +1,7 @@
-from Lexer.Lexer import Lexer
+from lexer.Lexer import Lexer
 
 lexer = Lexer().build()
-lexer.input("a x = 333 CONST else wtf ] && Boolean true //gg ggg$%^$%^cc\n%")
+lexer.input("a x = 333 CONST else wtf ] ee33 && Boolean true //gg ggg$%^$%^cc\n%")
 fo = open("foo.txt", "w")
 
 fo.write("RegEx    Token    AttVal\n")
