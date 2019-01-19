@@ -4,14 +4,29 @@ from lexer import Lexer
 
 class Yacc:
     tokens = Lexer.Lexer.tokens
+    precedence = (
+        ('left', 'Or', 'DoubleOr'),
+        ('left', 'And', 'DoubleAnd'),
+        # ('left', 'LEqual', 'GEqual', 'EEqual', 'NonEqualOP', 'GreaterOP', 'LessOP'),
+        ('left', 'Plus', 'Minus'),
+        ('left', 'Times', 'Divide'),
+        ('left', 'ModeOP'),
+        ('right', 'Tilda', 'PP', 'MM'),
+        ('nonassoc', 'Else_KW', 'Then_KW'),
+    )
 
     def p_program(self, p):
         """program : list"""
 
+    # def p_numOrLetter(self, p):
+    #     """numOrLetter : Num
+    #     | Letter
+    #     | numOrLetter
+    #     | """
+
     def p_numOrLetter(self, p):
         """numOrLetter : Num
         | Letter
-        | numOrLetter
         | """
 
     def p_list(self, p):
@@ -53,7 +68,7 @@ class Yacc:
         | int_KW"""
 
     def p_function(self, p):
-        """function : void_KW numOrLetter Opening_Parentheses parameter Closing_Parentheses Opening_Bracket statement Closing_Bracket
+        """function : void_KW numOrLetter Opening_Parentheses parameter Closing_Parentheses Opening_Brace statement Closing_Brace
                     | type Letter numOrLetter Opening_Parentheses parameter Closing_Parentheses statement"""
 
     def p_parameter(self, p):
@@ -104,8 +119,7 @@ class Yacc:
 
     def p_ifBody(self, p):
         """ifBody : statement
-        | statement Other_KW statement
-        | Semicolon"""
+        | statement Other_KW statement"""
 
     def p_iterationPhrase(self, p):
         """iterationPhrase : Till_KW Opening_Parentheses eachExpression Closing_Parentheses statement"""
@@ -133,11 +147,27 @@ class Yacc:
         | DivideEqual"""
 
     def p_eachExpression(self, p):
-        """eachExpression : eachExpression logicOp eachExpression
-        | eachExpression logicOp Then_KW eachExpression
-        | logicOp eachExpression
+        """eachExpression : eachExpression DoubleAnd eachExpression
+        | eachExpression DoubleOr eachExpression
+        | eachExpression Tilda eachExpression
+        | eachExpression And eachExpression
+        | eachExpression Or eachExpression
+        | eachExpression DoubleAnd Then_KW eachExpression
+        | eachExpression DoubleOr Then_KW eachExpression
+        | eachExpression Tilda Then_KW eachExpression
+        | eachExpression And Then_KW eachExpression
+        | eachExpression Or Then_KW eachExpression
+        | DoubleAnd eachExpression
+        | DoubleOr eachExpression
+        | Tilda eachExpression
+        | And eachExpression
+        | Or eachExpression
         | relExpression
-        | eachExpression logicOp Else_KW eachExpression"""
+        | eachExpression Or Else_KW eachExpression
+        | eachExpression And Else_KW eachExpression
+        | eachExpression Tilda Else_KW eachExpression
+        | eachExpression DoubleOr Else_KW eachExpression
+        | eachExpression DoubleAnd Else_KW eachExpression"""
 
     def p_relExpression(self, p):
         """relExpression : mathEXP compareType mathEXP
@@ -158,15 +188,19 @@ class Yacc:
         | NonEqualOP"""
 
     def p_mathEXP(self, p):
-        """mathEXP : mathEXP op mathEXP
+        """mathEXP : mathEXP Plus mathEXP
+        | mathEXP Minus mathEXP
+        | mathEXP Times mathEXP
+        | mathEXP Divide mathEXP
+        | mathEXP ModeOP mathEXP
         | unaryExpression"""
 
-    def p_op(self, p):
-        """op : Plus
-        | Minus
-        | Times
-        | Divide
-        | ModeOP"""
+    # def p_op(self, p):
+    #     """op : Plus
+    #     | Minus
+    #     | Times
+    #     | Divide
+    #     | ModeOP"""
 
     def p_unaryExpression(self, p):
         """unaryExpression : unaryop unaryExpression
@@ -175,7 +209,7 @@ class Yacc:
     def p_unaryop(self, p):
         """unaryop : Minus
         | Times
-        | QMark"""
+        | QMark """
 
     def p_factor(self, p):
         """factor : inalterable
@@ -204,12 +238,12 @@ class Yacc:
         | True_KW
         | False_KW"""
 
-    def p_logicOp(self, p):
-        """logicOp : DoubleAnd
-        | DoubleOr
-        | Tilda
-        | And
-        | Or"""
+    # def p_logicOp(self, p):
+    #     """logicOp : DoubleAnd
+    #     | DoubleOr
+    #     | Tilda
+    #     | And
+    #     | Or"""
 
     def p_error(self, p):
         print('syntax error')

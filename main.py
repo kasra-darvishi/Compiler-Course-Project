@@ -1,5 +1,5 @@
 from lexer.Lexer import Lexer
-from parser2.Yacc import Yacc
+from parserr.Yacc import Yacc
 
 # lexer = Lexer().build()
 # lexer.input("a x = 333 CONST else wtf ] ,ee33 && Boolean true //gg ggg$%^$%^cc\n%")
@@ -21,6 +21,6 @@ fo.write("RegEx    Token    AttVal\n")
 y = Yacc()
 lexer = Lexer()
 # SymbolTable.SymbolTable.sTable = lexer.sTable
-y.build().parse("if (B1<5) till(B1  != 5) B1++; ", lexer.build(), True)
+y.build().parse("void someMethod (int a) { if ( a + b ) a = c + b++; }", lexer.build(), True)
 
 fo.close()
