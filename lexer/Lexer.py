@@ -4,7 +4,7 @@ import ply.lex as lex
 class Lexer:
     sTable = []
 
-    tokens = ['Const_KW', 'reserved', 'Num', 'Letter', 'Opening_Bracket', 'Closing_Bracket', 'Semicolon', 'Boolean_KW',
+    tokens = ['Const_KW', 'reserved', 'Num', 'VarName', 'MethName', 'Opening_Bracket', 'Closing_Bracket', 'Semicolon', 'Boolean_KW',
               'Character_KW', 'Integer_KW', 'char_KW', 'bool_KW', 'int_KW', 'void_KW', 'If_KW', 'Other_KW', 'Till_KW',
               'ComeBack_KW', 'GiveBack_KW', 'Continue_KW', 'PP', 'MM', 'Opening_Parentheses', 'Static_KW',
               'Closing_Parentheses', 'Opening_Brace', 'Closing_Brace', 'Equal', 'PlusEqual',
@@ -71,30 +71,48 @@ class Lexer:
         'false': 'False_KW'
     }
 
-    def t_Num(self, t):
-        r'[0-9]+'
-        t.value = int(t.value)
-        return t
-
-
     def t_reserved(self, t):
-        # r"""[a-zA-Z_][a-zA-Z0-9_]*"""
-        r"""[a-zA-Z]+"""
-        t.type = self.reserved.get(t.value, 'Letter')  # Check for reserved words
-        if t.type == 'Letter':
-            if t.value not in self.sTable:
-                self.sTable.append(t.value)
+        r"""[a-zA-Z0-9_]+"""
+        isANum = True
+        for char in t.value:
+            if char != '0' and char != '1' and char != '2' and char != '3' and char != '4' and char != '5' and char != '6' and char != '7' and char != '8' and char != '9':
+                isANum = False
 
+        if isANum:
+            t.type = 'Num'
+            t.value = int(t.value)
+        else:
+            t.type = self.reserved.get(t.value, 'non')  # Check for reserved words
+            if t.type == 'non':
+                if t.value not in self.sTable:
+                    self.sTable.append(t.value)
+                if t.value[0] == '0' or t.value[0] == '1' or t.value[0] == '2' or t.value[0] == '3' or t.value[0] == '4' or t.value[0] == '5' or t.value[0] == '6' or t.value[0] == '7' or t.value[0] == '8' or t.value[0] == '9':
+                    t.type = 'MethName'
+                else:
+                    t.type = 'VarName'
         return t
+
+    # def t_MethName(self, t):
+    #     r"""[a-zA-Z0-9_]+"""
+    #     if t.value not in self.sTable:
+    #         self.sTable.append(t.value)
+    #     return t
+    #
+    # def t_reserved(self, t):
+    #     r"""[a-zA-Z_][a-zA-Z0-9_]*"""
+    #     t.type = self.reserved.get(t.value, 'VarName')  # Check for reserved words
+    #     if t.type == 'VarName':
+    #         if t.value not in self.sTable:
+    #             self.sTable.append(t.value)
+    #     return t
 
     def t_error(self, t):
         print("Invalid character: ", t.value[0])
         t.lexer.skip(1)
 
     def t_COMMENT(self, t):
-        r'(//.*)|%%%.*[\r\n]*.*%%%'
+        r"""//.*"""
         pass
-
 
     def build(self, **kwargs):
         self.lexer = lex.lex(module=self, **kwargs)

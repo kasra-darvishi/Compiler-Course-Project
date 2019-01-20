@@ -24,11 +24,6 @@ class Yacc:
     #     | numOrLetter
     #     | """
 
-    def p_numOrLetter(self, p):
-        """numOrLetter : Num
-        | Letter
-        | """
-
     def p_list(self, p):
         """list : list declaration
         | declaration"""
@@ -52,8 +47,8 @@ class Yacc:
         | varForm Colon Opening_Parentheses eachExpression Closing_Parentheses"""
 
     def p_varForm(self, p):
-        """varForm : Letter numOrLetter Opening_Bracket Num Closing_Bracket
-        | Letter  numOrLetter """
+        """varForm : VarName Opening_Bracket Num Closing_Bracket
+        | VarName """
 
     def p_scopedSpecifier(self, p):
         """scopedSpecifier : Static_KW type
@@ -67,9 +62,13 @@ class Yacc:
         | bool_KW
         | int_KW"""
 
+    def p_nameOfMethod(self, p):
+        """nameOfMethod : MethName
+                        | VarName"""
+
     def p_function(self, p):
-        """function : void_KW numOrLetter Opening_Parentheses parameter Closing_Parentheses Opening_Brace statement Closing_Brace
-                    | type Letter numOrLetter Opening_Parentheses parameter Closing_Parentheses statement"""
+        """function : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace statement Closing_Brace
+                    | type VarName Opening_Parentheses parameter Closing_Parentheses statement"""
 
     def p_parameter(self, p):
         """parameter : listOfParameters
@@ -91,8 +90,8 @@ class Yacc:
         | """
 
     def p_paramId(self, p):
-        """paramId : Letter numOrLetter
-        | Letter numOrLetter Opening_Bracket Closing_Bracket"""
+        """paramId : VarName
+        | VarName Opening_Bracket Closing_Bracket"""
 
     def p_statement(self, p):
         """statement : phrase
@@ -126,8 +125,7 @@ class Yacc:
 
     def p_returnPhrase(self, p):
         """returnPhrase : ComeBack_KW Semicolon
-        | GiveBack_KW allExpression Semicolon
-        | GiveBack_KW numOrLetter Semicolon"""
+        | GiveBack_KW allExpression Semicolon"""
 
     def p_continue(self, p):
         """continue : Continue_KW Semicolon"""
@@ -136,8 +134,7 @@ class Yacc:
         """allExpression : alterable mathOp allExpression
         | alterable PP
         | alterable MM
-        | eachExpression
-        | alterable mathOp alterable"""
+        | eachExpression"""
 
     def p_mathOp(self, p):
         """mathOp : Equal
@@ -216,14 +213,14 @@ class Yacc:
         | alterable"""
 
     def p_alterable(self, p):
-        """alterable : Letter numOrLetter
+        """alterable : VarName
         | alterable Opening_Bracket allExpression Closing_Bracket
-        | alterable Letter numOrLetter"""
+        | alterable VarName"""
 
     def p_inalterable(self, p):
         """inalterable : Opening_Parentheses allExpression Closing_Parentheses
         | constant
-        | Letter numOrLetter Opening_Parentheses args Closing_Parentheses"""
+        | VarName Opening_Parentheses args Closing_Parentheses"""
 
     def p_args(self, p):
         """args : arguments
