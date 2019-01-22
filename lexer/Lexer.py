@@ -11,10 +11,11 @@ class Lexer:
               'MinusEqual', 'TimesEqual', 'DivideEqual', 'Then_KW', 'Else_KW', 'LEqual', 'GEqual',
               'EEqual', 'GreaterOP', 'LessOP', 'NonEqualOP', 'Plus', 'Minus', 'Times',
               'Divide', 'ModeOP', 'QMark', 'True_KW', 'False_KW', 'DoubleAnd', 'DoubleOr',
-              'Tilda', 'And', 'Or', 'Comment', 'Comma', 'Colon']
+              'Tilda', 'And', 'Or', 'Comment', 'Comma', 'Colon', 'Dot']
 
 
     t_ignore = ' \t'
+    t_Dot = '\.'
     t_Colon = '\:'
     t_Comma = r'\,'
     t_Opening_Bracket = r'\['
@@ -46,8 +47,6 @@ class Lexer:
     t_DoubleAnd = r'\&\&'
     t_DoubleOr = r'\|\|'
     t_Tilda = r'\~'
-    t_And = r'\&'
-    t_Or = r'\|'
 
     reserved = {
         'Boolean': 'Boolean_KW',
@@ -67,6 +66,8 @@ class Lexer:
         'then': 'Then_KW',
         'else': 'Else_KW',
         'CONST': 'Const_KW',
+        'and': 'And',
+        'or': 'Or',
         'true': 'True_KW',
         'false': 'False_KW'
     }
@@ -107,7 +108,7 @@ class Lexer:
     #     return t
 
     def t_error(self, t):
-        print("Invalid character: ", t.value[0])
+        # print("Invalid character: ", t.value[0])
         t.lexer.skip(1)
 
     def t_COMMENT(self, t):
