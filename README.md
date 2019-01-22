@@ -1,2 +1,2 @@
 # Compiler-Course-Project
-Construct a simple compiler using Lex and Yacc
+Design and implementation of a simple compiler using Lex and Yacc
