@@ -1,0 +1,544 @@
+PLY: PARSE DEBUG START
+
+State  : 0
+Stack  : . LexToken(void_KW,'void',1,0)
+Action : Shift and goto state 6
+
+State  : 6
+Stack  : void_KW . LexToken(VarName,'someMethod2',1,5)
+Action : Shift and goto state 17
+
+State  : 17
+Defaulted state 17: Reduce using 23
+Stack  : void_KW VarName . None
+Action : Reduce rule [nameOfMethod -> VarName] with ['someMethod2'] and goto state 15
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 15
+Stack  : void_KW nameOfMethod . LexToken(Opening_Parentheses,'(',1,17)
+Action : Shift and goto state 22
+
+State  : 22
+Stack  : void_KW nameOfMethod Opening_Parentheses . LexToken(int_KW,'int',1,18)
+Action : Shift and goto state 13
+
+State  : 13
+Defaulted state 13: Reduce using 21
+Stack  : void_KW nameOfMethod Opening_Parentheses int_KW . None
+Action : Reduce rule [type -> int_KW] with ['int'] and goto state 31
+Result : <tuple @ 0x1b8b6cca448> (('type', 'int'))
+
+State  : 31
+Stack  : void_KW nameOfMethod Opening_Parentheses type . LexToken(VarName,'a',1,22)
+Action : Shift and goto state 41
+
+State  : 41
+Stack  : void_KW nameOfMethod Opening_Parentheses type VarName . LexToken(Comma,',',1,23)
+Action : Reduce rule [paramId -> VarName] with ['a'] and goto state 40
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 40
+Stack  : void_KW nameOfMethod Opening_Parentheses type paramId . LexToken(Comma,',',1,23)
+Action : Reduce rule [paramList -> paramId] with [None] and goto state 39
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 39
+Stack  : void_KW nameOfMethod Opening_Parentheses type paramList . LexToken(Comma,',',1,23)
+Action : Shift and goto state 68
+
+State  : 68
+Stack  : void_KW nameOfMethod Opening_Parentheses type paramList Comma . LexToken(VarName,'b1',1,25)
+Action : Shift and goto state 41
+
+State  : 41
+Stack  : void_KW nameOfMethod Opening_Parentheses type paramList Comma VarName . LexToken(Comma,',',1,27)
+Action : Reduce rule [paramId -> VarName] with ['b1'] and goto state 119
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 119
+Stack  : void_KW nameOfMethod Opening_Parentheses type paramList Comma paramId . LexToken(Comma,',',1,27)
+Action : Reduce rule [paramList -> paramList Comma paramId] with [None,',',None] and goto state 39
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 39
+Stack  : void_KW nameOfMethod Opening_Parentheses type paramList . LexToken(Comma,',',1,27)
+Action : Shift and goto state 68
+
+State  : 68
+Stack  : void_KW nameOfMethod Opening_Parentheses type paramList Comma . LexToken(VarName,'b2',1,29)
+Action : Shift and goto state 41
+
+State  : 41
+Stack  : void_KW nameOfMethod Opening_Parentheses type paramList Comma VarName . LexToken(Closing_Parentheses,')',1,31)
+Action : Reduce rule [paramId -> VarName] with ['b2'] and goto state 119
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 119
+Stack  : void_KW nameOfMethod Opening_Parentheses type paramList Comma paramId . LexToken(Closing_Parentheses,')',1,31)
+Action : Reduce rule [paramList -> paramList Comma paramId] with [None,',',None] and goto state 39
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 39
+Stack  : void_KW nameOfMethod Opening_Parentheses type paramList . LexToken(Closing_Parentheses,')',1,31)
+Action : Reduce rule [paramTypeList -> type paramList] with [('type', 'int'),None] and goto state 30
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 30
+Stack  : void_KW nameOfMethod Opening_Parentheses paramTypeList . LexToken(Closing_Parentheses,')',1,31)
+Action : Reduce rule [listOfParameters -> paramTypeList] with [None] and goto state 29
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 29
+Stack  : void_KW nameOfMethod Opening_Parentheses listOfParameters . LexToken(Closing_Parentheses,')',1,31)
+Action : Reduce rule [parameter -> listOfParameters] with [None] and goto state 28
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 28
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter . LexToken(Closing_Parentheses,')',1,31)
+Action : Shift and goto state 37
+
+State  : 37
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses . LexToken(Opening_Brace,'{',1,33)
+Action : Shift and goto state 66
+
+State  : 66
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace . LexToken(If_KW,'if',1,39)
+Action : Shift and goto state 81
+
+State  : 81
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW . LexToken(Opening_Parentheses,'(',1,42)
+Action : Shift and goto state 123
+
+State  : 123
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses . LexToken(VarName,'a',1,44)
+Action : Shift and goto state 62
+
+State  : 62
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses VarName . LexToken(Plus,'+',1,46)
+Action : Reduce rule [alterable -> VarName] with ['a'] and goto state 60
+Result : <str @ 0x1b8b67e7d18> ('a')
+
+State  : 60
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses alterable . LexToken(Plus,'+',1,46)
+Action : Reduce rule [factor -> alterable] with ['a'] and goto state 57
+Result : <str @ 0x1b8b67e7d18> ('a')
+
+State  : 57
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses factor . LexToken(Plus,'+',1,46)
+Action : Reduce rule [unaryExpression -> factor] with ['a'] and goto state 55
+Result : <str @ 0x1b8b67e7d18> ('a')
+
+State  : 55
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses unaryExpression . LexToken(Plus,'+',1,46)
+Action : Reduce rule [mathEXP -> unaryExpression] with ['a'] and goto state 52
+Result : <str @ 0x1b8b67e7d18> ('a')
+
+State  : 52
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses mathEXP . LexToken(Plus,'+',1,46)
+Action : Shift and goto state 101
+
+State  : 101
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses mathEXP Plus . LexToken(VarName,'b2',1,48)
+Action : Shift and goto state 62
+
+State  : 62
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses mathEXP Plus VarName . LexToken(GreaterOP,'>',1,51)
+Action : Reduce rule [alterable -> VarName] with ['b2'] and goto state 60
+Result : <str @ 0x1b8b6d1f378> ('b2')
+
+State  : 60
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses mathEXP Plus alterable . LexToken(GreaterOP,'>',1,51)
+Action : Reduce rule [factor -> alterable] with ['b2'] and goto state 57
+Result : <str @ 0x1b8b6d1f378> ('b2')
+
+State  : 57
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses mathEXP Plus factor . LexToken(GreaterOP,'>',1,51)
+Action : Reduce rule [unaryExpression -> factor] with ['b2'] and goto state 55
+Result : <str @ 0x1b8b6d1f378> ('b2')
+
+State  : 55
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses mathEXP Plus unaryExpression . LexToken(GreaterOP,'>',1,51)
+Action : Reduce rule [mathEXP -> unaryExpression] with ['b2'] and goto state 153
+Result : <str @ 0x1b8b6d1f378> ('b2')
+
+State  : 153
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses mathEXP Plus mathEXP . LexToken(GreaterOP,'>',1,51)
+Action : Reduce rule [mathEXP -> mathEXP Plus mathEXP] with ['a','+','b2'] and goto state 52
+Result : <str @ 0x1b8b6d1f298> ('_t0')
+
+State  : 52
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses mathEXP . LexToken(GreaterOP,'>',1,51)
+Action : Shift and goto state 111
+
+State  : 111
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses mathEXP GreaterOP . LexToken(VarName,'b1',1,53)
+Action : Reduce rule [nonEqual -> GreaterOP] with ['>'] and goto state 107
+Result : <str @ 0x1b8b6a98df8> ('>')
+
+State  : 107
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses mathEXP nonEqual . LexToken(VarName,'b1',1,53)
+Action : Reduce rule [compareType -> nonEqual] with ['>'] and goto state 100
+Result : <str @ 0x1b8b6a98df8> ('>')
+
+State  : 100
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses mathEXP compareType . LexToken(VarName,'b1',1,53)
+Action : Shift and goto state 62
+
+State  : 62
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses mathEXP compareType VarName . LexToken(Closing_Parentheses,')',1,55)
+Action : Reduce rule [alterable -> VarName] with ['b1'] and goto state 60
+Result : <str @ 0x1b8b6d1f538> ('b1')
+
+State  : 60
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses mathEXP compareType alterable . LexToken(Closing_Parentheses,')',1,55)
+Action : Reduce rule [factor -> alterable] with ['b1'] and goto state 57
+Result : <str @ 0x1b8b6d1f538> ('b1')
+
+State  : 57
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses mathEXP compareType factor . LexToken(Closing_Parentheses,')',1,55)
+Action : Reduce rule [unaryExpression -> factor] with ['b1'] and goto state 55
+Result : <str @ 0x1b8b6d1f538> ('b1')
+
+State  : 55
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses mathEXP compareType unaryExpression . LexToken(Closing_Parentheses,')',1,55)
+Action : Reduce rule [mathEXP -> unaryExpression] with ['b1'] and goto state 152
+Result : <str @ 0x1b8b6d1f538> ('b1')
+
+State  : 152
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses mathEXP compareType mathEXP . LexToken(Closing_Parentheses,')',1,55)
+Action : Reduce rule [relExpression -> mathEXP compareType mathEXP] with ['_t0','>','b1'] and goto state 51
+Result : <str @ 0x1b8b6d1f2d0> ('_t1')
+
+State  : 51
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses relExpression . LexToken(Closing_Parentheses,')',1,55)
+Action : Reduce rule [eachExpression -> relExpression] with ['_t1'] and goto state 169
+Result : <str @ 0x1b8b6d1f2d0> ('_t1')
+
+State  : 169
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression . LexToken(Closing_Parentheses,')',1,55)
+Action : Shift and goto state 190
+
+State  : 190
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses . LexToken(If_KW,'if',1,65)
+Action : Shift and goto state 81
+
+State  : 81
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW . LexToken(Opening_Parentheses,'(',1,68)
+Action : Shift and goto state 123
+
+State  : 123
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses . LexToken(VarName,'a',1,70)
+Action : Shift and goto state 62
+
+State  : 62
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses VarName . LexToken(Minus,'-',1,72)
+Action : Reduce rule [alterable -> VarName] with ['a'] and goto state 60
+Result : <str @ 0x1b8b67e7d18> ('a')
+
+State  : 60
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses alterable . LexToken(Minus,'-',1,72)
+Action : Reduce rule [factor -> alterable] with ['a'] and goto state 57
+Result : <str @ 0x1b8b67e7d18> ('a')
+
+State  : 57
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses factor . LexToken(Minus,'-',1,72)
+Action : Reduce rule [unaryExpression -> factor] with ['a'] and goto state 55
+Result : <str @ 0x1b8b67e7d18> ('a')
+
+State  : 55
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses unaryExpression . LexToken(Minus,'-',1,72)
+Action : Reduce rule [mathEXP -> unaryExpression] with ['a'] and goto state 52
+Result : <str @ 0x1b8b67e7d18> ('a')
+
+State  : 52
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses mathEXP . LexToken(Minus,'-',1,72)
+Action : Shift and goto state 102
+
+State  : 102
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses mathEXP Minus . LexToken(VarName,'b2',1,74)
+Action : Shift and goto state 62
+
+State  : 62
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses mathEXP Minus VarName . LexToken(EEqual,'==',1,77)
+Action : Reduce rule [alterable -> VarName] with ['b2'] and goto state 60
+Result : <str @ 0x1b8b6d1f618> ('b2')
+
+State  : 60
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses mathEXP Minus alterable . LexToken(EEqual,'==',1,77)
+Action : Reduce rule [factor -> alterable] with ['b2'] and goto state 57
+Result : <str @ 0x1b8b6d1f618> ('b2')
+
+State  : 57
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses mathEXP Minus factor . LexToken(EEqual,'==',1,77)
+Action : Reduce rule [unaryExpression -> factor] with ['b2'] and goto state 55
+Result : <str @ 0x1b8b6d1f618> ('b2')
+
+State  : 55
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses mathEXP Minus unaryExpression . LexToken(EEqual,'==',1,77)
+Action : Reduce rule [mathEXP -> unaryExpression] with ['b2'] and goto state 154
+Result : <str @ 0x1b8b6d1f618> ('b2')
+
+State  : 154
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses mathEXP Minus mathEXP . LexToken(EEqual,'==',1,77)
+Action : Reduce rule [mathEXP -> mathEXP Minus mathEXP] with ['a','-','b2'] and goto state 52
+Result : <str @ 0x1b8b6d1f730> ('_t2')
+
+State  : 52
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses mathEXP . LexToken(EEqual,'==',1,77)
+Action : Shift and goto state 110
+
+State  : 110
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses mathEXP EEqual . LexToken(VarName,'b1',1,80)
+Action : Reduce rule [equal -> EEqual] with ['=='] and goto state 106
+Result : <str @ 0x1b8b6d1f688> ('==')
+
+State  : 106
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses mathEXP equal . LexToken(VarName,'b1',1,80)
+Action : Reduce rule [compareType -> equal] with ['=='] and goto state 100
+Result : <str @ 0x1b8b6d1f688> ('==')
+
+State  : 100
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses mathEXP compareType . LexToken(VarName,'b1',1,80)
+Action : Shift and goto state 62
+
+State  : 62
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses mathEXP compareType VarName . LexToken(Closing_Parentheses,')',1,82)
+Action : Reduce rule [alterable -> VarName] with ['b1'] and goto state 60
+Result : <str @ 0x1b8b6d1f7d8> ('b1')
+
+State  : 60
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses mathEXP compareType alterable . LexToken(Closing_Parentheses,')',1,82)
+Action : Reduce rule [factor -> alterable] with ['b1'] and goto state 57
+Result : <str @ 0x1b8b6d1f7d8> ('b1')
+
+State  : 57
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses mathEXP compareType factor . LexToken(Closing_Parentheses,')',1,82)
+Action : Reduce rule [unaryExpression -> factor] with ['b1'] and goto state 55
+Result : <str @ 0x1b8b6d1f7d8> ('b1')
+
+State  : 55
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses mathEXP compareType unaryExpression . LexToken(Closing_Parentheses,')',1,82)
+Action : Reduce rule [mathEXP -> unaryExpression] with ['b1'] and goto state 152
+Result : <str @ 0x1b8b6d1f7d8> ('b1')
+
+State  : 152
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses mathEXP compareType mathEXP . LexToken(Closing_Parentheses,')',1,82)
+Action : Reduce rule [relExpression -> mathEXP compareType mathEXP] with ['_t2','==','b1'] and goto state 51
+Result : <str @ 0x1b8b6d1f650> ('_t3')
+
+State  : 51
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses relExpression . LexToken(Closing_Parentheses,')',1,82)
+Action : Reduce rule [eachExpression -> relExpression] with ['_t3'] and goto state 169
+Result : <str @ 0x1b8b6d1f650> ('_t3')
+
+State  : 169
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression . LexToken(Closing_Parentheses,')',1,82)
+Action : Shift and goto state 190
+
+State  : 190
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses . LexToken(VarName,'a',1,96)
+Action : Shift and goto state 70
+
+State  : 70
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses VarName . LexToken(Equal,'=',1,98)
+Action : Reduce rule [alterable -> VarName] with ['a'] and goto state 87
+Result : <str @ 0x1b8b67e7d18> ('a')
+
+State  : 87
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses alterable . LexToken(Equal,'=',1,98)
+Action : Shift and goto state 131
+
+State  : 131
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses alterable Equal . LexToken(VarName,'b',1,100)
+Action : Reduce rule [mathOp -> Equal] with ['='] and goto state 128
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 128
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses alterable mathOp . LexToken(VarName,'b',1,100)
+Action : Shift and goto state 70
+
+State  : 70
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses alterable mathOp VarName . LexToken(PP,'++',1,101)
+Action : Reduce rule [alterable -> VarName] with ['b'] and goto state 87
+Result : <str @ 0x1b8b67e7688> ('b')
+
+State  : 87
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses alterable mathOp alterable . LexToken(PP,'++',1,101)
+Action : Shift and goto state 129
+
+State  : 129
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses alterable mathOp alterable PP . LexToken(Semicolon,';',1,103)
+Action : Reduce rule [allExpression -> alterable PP] with ['b','++'] and goto state 172
+Result : <str @ 0x1b8b67e7688> ('b')
+
+State  : 172
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses alterable mathOp allExpression . LexToken(Semicolon,';',1,103)
+Action : Reduce rule [allExpression -> alterable mathOp allExpression] with ['a',None,'b'] and goto state 78
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 78
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses allExpression . LexToken(Semicolon,';',1,103)
+Action : Shift and goto state 121
+
+State  : 121
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses allExpression Semicolon . LexToken(Other_KW,'other',1,113)
+Action : Reduce rule [phrase -> allExpression Semicolon] with [None,';'] and goto state 72
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 72
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses phrase . LexToken(Other_KW,'other',1,113)
+Action : Reduce rule [statement -> phrase] with [None] and goto state 196
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 196
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement . LexToken(Other_KW,'other',1,113)
+Action : Shift and goto state 199
+
+State  : 199
+ 
+
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW . LexToken(VarName,'b',1,131)
+Action : Shift and goto state 70
+
+State  : 70
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW VarName . LexToken(Plus,'+',1,133)
+Action : Reduce rule [alterable -> VarName] with ['b'] and goto state 87
+Result : <str @ 0x1b8b67e7688> ('b')
+
+State  : 87
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW alterable . LexToken(Plus,'+',1,133)
+Action : Reduce rule [factor -> alterable] with ['b'] and goto state 57
+Result : <str @ 0x1b8b67e7688> ('b')
+
+State  : 57
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW factor . LexToken(Plus,'+',1,133)
+Action : Reduce rule [unaryExpression -> factor] with ['b'] and goto state 55
+Result : <str @ 0x1b8b67e7688> ('b')
+
+State  : 55
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW unaryExpression . LexToken(Plus,'+',1,133)
+Action : Reduce rule [mathEXP -> unaryExpression] with ['b'] and goto state 52
+Result : <str @ 0x1b8b67e7688> ('b')
+
+State  : 52
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW mathEXP . LexToken(Plus,'+',1,133)
+Action : Shift and goto state 101
+
+State  : 101
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW mathEXP Plus . LexToken(VarName,'c',1,135)
+Action : Shift and goto state 62
+
+State  : 62
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW mathEXP Plus VarName . LexToken(Semicolon,';',1,136)
+Action : Reduce rule [alterable -> VarName] with ['c'] and goto state 60
+Result : <str @ 0x1b8b4ca8e30> ('c')
+
+State  : 60
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW mathEXP Plus alterable . LexToken(Semicolon,';',1,136)
+Action : Reduce rule [factor -> alterable] with ['c'] and goto state 57
+Result : <str @ 0x1b8b4ca8e30> ('c')
+
+State  : 57
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW mathEXP Plus factor . LexToken(Semicolon,';',1,136)
+Action : Reduce rule [unaryExpression -> factor] with ['c'] and goto state 55
+Result : <str @ 0x1b8b4ca8e30> ('c')
+
+State  : 55
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW mathEXP Plus unaryExpression . LexToken(Semicolon,';',1,136)
+Action : Reduce rule [mathEXP -> unaryExpression] with ['c'] and goto state 153
+Result : <str @ 0x1b8b4ca8e30> ('c')
+
+State  : 153
+ 
+
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW mathEXP Plus mathEXP . LexToken(Semicolon,';',1,136)
+Action : Reduce rule [mathEXP -> mathEXP Plus mathEXP] with ['b','+','c'] and goto state 52
+Result : <str @ 0x1b8b6d1f8f0> ('_t5')
+
+State  : 52
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW mathEXP . LexToken(Semicolon,';',1,136)
+Action : Reduce rule [relExpression -> mathEXP] with ['_t5'] and goto state 51
+Result : <str @ 0x1b8b6d1f8f0> ('_t5')
+
+State  : 51
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW relExpression . LexToken(Semicolon,';',1,136)
+Action : Reduce rule [eachExpression -> relExpression] with ['_t5'] and goto state 82
+Result : <str @ 0x1b8b6d1f8f0> ('_t5')
+
+State  : 82
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW eachExpression . LexToken(Semicolon,';',1,136)
+Action : Reduce rule [allExpression -> eachExpression] with ['_t5'] and goto state 78
+Result : <str @ 0x1b8b6d1f8f0> ('_t5')
+
+State  : 78
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW allExpression . LexToken(Semicolon,';',1,136)
+Action : Shift and goto state 121
+
+State  : 121
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW allExpression Semicolon . LexToken(Closing_Brace,'}',1,138)
+Action : Reduce rule [phrase -> allExpression Semicolon] with ['_t5',';'] and goto state 72
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 72
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW phrase . LexToken(Closing_Brace,'}',1,138)
+Action : Reduce rule [statement -> phrase] with [None] and goto state 201
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 201
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses statement Other_KW statement . LexToken(Closing_Brace,'}',1,138)
+Action : Reduce rule [ifBody -> statement Other_KW statement] with [None,'other',None] and goto state 194
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 194
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses If_KW Opening_Parentheses eachExpression Closing_Parentheses ifBody . LexToken(Closing_Brace,'}',1,138)
+Action : Reduce rule [selectPhrase -> If_KW Opening_Parentheses eachExpression Closing_Parentheses ifBody] with ['if','(','_t3',')',None] and goto state 74
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 74
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses selectPhrase . LexToken(Closing_Brace,'}',1,138)
+Action : Reduce rule [statement -> selectPhrase] with [None] and goto state 196
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 196
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses statement . LexToken(Closing_Brace,'}',1,138)
+Action : Reduce rule [ifBody -> statement] with [None] and goto state 194
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 194
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace If_KW Opening_Parentheses eachExpression Closing_Parentheses ifBody . LexToken(Closing_Brace,'}',1,138)
+Action : Reduce rule [selectPhrase -> If_KW Opening_Parentheses eachExpression Closing_Parentheses ifBody] with ['if','(','_t1',')',None] and goto state 74
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 74
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace selectPhrase . LexToken(Closing_Brace,'}',1,138)
+Action : Reduce rule [statement -> selectPhrase] with [None] and goto state 118
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 118
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace statement . LexToken(Closing_Brace,'}',1,138)
+Action : Shift and goto state 163
+
+State  : 163
+Stack  : void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace statement Closing_Brace . $end
+Action : Reduce rule [function -> void_KW nameOfMethod Opening_Parentheses parameter Closing_Parentheses Opening_Brace statement Closing_Brace] with ['void',None,'(',None,')','{',None,'}'] and goto state 4
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 4
+Stack  : function . $end
+Action : Reduce rule [declaration -> function] with [None] and goto state 3
+Result : <tuple @ 0x1b8b6cca448> (('declaration', None))
+
+State  : 3
+Stack  : declaration . $end
+Action : Reduce rule [list -> declaration] with [<tuple @ 0x1b8b6cca448>] and goto state 2
+Result : <tuple @ 0x1b8b6cee708> (('list', ('declaration', None)))
+
+State  : 2
+Stack  : list . $end
+Action : Reduce rule [program -> list] with [<tuple @ 0x1b8b6cee708>] and goto state 1
+Result : <NoneType @ 0x7ffc99bd6ce0> (None)
+
+State  : 1
+Stack  : program . $end
+Done   : Returning <NoneType @ 0x7ffc99bd6ce0> (None)
+PLY: PARSE DEBUG END

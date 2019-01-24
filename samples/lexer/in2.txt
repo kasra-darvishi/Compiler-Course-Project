@@ -1,0 +1,11 @@
+Boolean someMethod ( int a,b; bool c,d,e) {
+    static int f, g;
+    g = a + b;
+    till ( a > b )
+        if (c and d)
+            a--;
+        other
+            a = b - a;
+    comeback;
+    giveback b++;
+}

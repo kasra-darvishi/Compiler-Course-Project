@@ -1,8 +1,8 @@
 from lexer.Lexer import Lexer
 from parserr.Yacc import Yacc
 
-# lexer = Lexer().build()
-f = open("samples/sample1.txt", "r")
+# lexer = lexer().build()
+f = open("samples/lexer/in1.txt", "r")
 # lexer.input(f.read())
 # fo = open("foo.txt", "w")
 #
@@ -13,7 +13,7 @@ f = open("samples/sample1.txt", "r")
 #         break  # No more input
 #     index = "-"
 #     if tok.type == 'ID':
-#         index = Lexer.sTable.index(tok.value)
+#         index = lexer.sTable.index(tok.value)
 #     if tok.type == 'Num':
 #         index = tok.value
 #     fo.write(str(tok.value) + "    " + str(tok.type) + "    " +  str(index) + "\n")

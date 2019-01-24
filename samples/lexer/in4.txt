@@ -1,0 +1,13 @@
+bool g[20]:( a > b and e != c );
+void 2so (int a; Boolean c, d) {
+    {
+        if ( a + b2 > b1){
+            z = e > c or b < a and e != b;
+            c = b;
+        }
+        if ( a + b2 > b1){
+            z = e > c or b < a and e != b;
+            c = b;
+        }
+    }
+}

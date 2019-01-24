@@ -1,0 +1,12 @@
+[Operator , arg1 , arg2 , Result]
+
+-   e   _None_   _t0
+*   b   _t0   _t1
+-   c   _t1   _t2
+-   b   _None_   _t3
++   _t2   _t3   _t4
+=   _t4   _None_   a
+>   a   b   _t5
+!=   e   c   _t6
+and   _t5   _t6   _t7
+=   _t7   _None_   g

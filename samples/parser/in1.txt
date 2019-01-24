@@ -1,0 +1,7 @@
+void someMethod2 (int a, b1, b2) {
+    if ( a + b2 > b1)
+        if ( a - b2 == b1)
+            a = b++;
+        other
+            b + c;
+}
